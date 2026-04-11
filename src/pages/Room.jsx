@@ -17,14 +17,36 @@ const Spinner = ({ fullscreen = false }) => (
 );
 
 // ICE servers configuration for RTCPeerConnection
-
 const ICE_SERVERS = {
     iceServers: [
+        // STUN (always keep)
         { urls: "stun:stun.l.google.com:19302" },
         { urls: "stun:stun1.l.google.com:19302" },
-        // Add TURN server here for production NAT traversal:
-        // { urls: "turn:your-turn.example.com:3478", username: "x", credential: "y" },
-    ],
+
+        {
+            urls: "stun:stun.relay.metered.ca:80",
+        },
+        {
+            urls: "turn:global.relay.metered.ca:80",
+            username: "3a7f1bda7ecd86ca77bfe990",
+            credential: "XQ24Ivfsb2mB/g/1",
+        },
+        {
+            urls: "turn:global.relay.metered.ca:80?transport=tcp",
+            username: "3a7f1bda7ecd86ca77bfe990",
+            credential: "XQ24Ivfsb2mB/g/1",
+        },
+        {
+            urls: "turn:global.relay.metered.ca:443",
+            username: "3a7f1bda7ecd86ca77bfe990",
+            credential: "XQ24Ivfsb2mB/g/1",
+        },
+        {
+            urls: "turns:global.relay.metered.ca:443?transport=tcp",
+            username: "3a7f1bda7ecd86ca77bfe990",
+            credential: "XQ24Ivfsb2mB/g/1",
+        },
+    ]
 };
 
 
